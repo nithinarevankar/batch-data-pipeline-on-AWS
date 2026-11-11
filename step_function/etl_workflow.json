@@ -1,0 +1,55 @@
+{
+  "Comment": "ETL pipeline with SNS failure notification",
+  "StartAt": "Ingestion",
+  "QueryLanguage": "JSONata",
+  "States": {
+    "Ingestion": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::glue:startJobRun.sync",
+      "Arguments": {
+        "JobName": "Ingestion"
+      },
+      "Next": "Transformation"
+    },
+    "Transformation": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::glue:startJobRun.sync",
+      "Arguments": {
+        "JobName": "Transformation"
+      },
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "Output": "{% $states.errorOutput %}",
+          "Next": "PublishError"
+        }
+      ],
+      "Next": "load"
+    },
+    "PublishError": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sns:publish",
+      "Arguments": {
+        "TopicArn": "TopicArn",
+        "Subject": "Silver Transformation Failed",
+        "Message": "{% 'ETL Pipeline Failed: Bronze to Silver transformation. Error details: ' & $string($states.input) %}"
+      },
+      "Next": "PipelineFailed"
+    },
+    "PipelineFailed": {
+      "Type": "Fail",
+      "Error": "TransformationFailed",
+      "Cause": "Bronze to Silver transformation failed. SNS notification sent."
+    },
+    "load": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::glue:startJobRun.sync",
+      "Arguments": {
+        "JobName": "Load"
+      },
+      "End": true
+    }
+  }
+}

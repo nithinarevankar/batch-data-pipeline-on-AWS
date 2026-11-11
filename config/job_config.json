@@ -1,0 +1,43 @@
+{
+  "environment": "dev",
+
+  "aws": {
+    "region": "ap-south-1",
+    "s3_bucket": "your-retail-data-lake"
+  },
+
+  "catalog": {
+    "name": "glue_catalog",
+    "bronze_database": "bronze",
+    "silver_database": "silver",
+    "gold_database": "gold",
+    "watermark_database": "etl_utils",
+    "watermark_table": "watermarklog"
+  },
+
+  "sources": {
+    "events": {
+      "database": "source",
+      "table": "events",
+      "target_table": "event"
+    },
+    "stores": {
+      "database": "source",
+      "table": "stores",
+      "target_table": "stores"
+    }
+  },
+
+  "processing": {
+    "format": "iceberg",
+    "write_mode": "merge",
+    "lookback_days": 3
+  },
+
+  "paths": {
+    "bronze": "raw/",
+    "silver": "curated/silver/",
+    "gold": "curated/gold/",
+    "checkpoints": "checkpoints/"
+  }
+}
