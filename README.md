@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Status-In%20Progress-yellow?style=flat-square" />
+  <img src="https://img.shields.io/badge/Status-Completed-brightgreen?style=flat-square" />
   <img src="https://img.shields.io/badge/Cloud-AWS-orange?style=flat-square&logo=amazonaws" />
   <img src="https://img.shields.io/badge/Architecture-Medallion-blue?style=flat-square" />
 </p>
