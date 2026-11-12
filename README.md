@@ -1,9 +1,31 @@
 # AWS Data Engineering – Serverless Data Lake Pipeline
 
-A serverless data engineering pipeline built using AWS services to ingest, process, transform, and manage data using a Medallion Architecture (Bronze, Silver, and Gold).
+<p align="center">
+  <b>An end-to-end AWS data engineering pipeline that transforms raw data into analytics-ready datasets using Amazon S3, AWS Glue, Apache Iceberg, and Amazon Athena.</b>
+</p>
 
-The project demonstrates scalable ETL processing, incremental data loading, data quality validation, schema management, and workflow orchestration using AWS-native services.
+<p align="center">
+  <a href="#-architecture">🏗️ Architecture</a> |
+  <a href="#-features">✨ Features</a> |
+  <a href="#-data-pipeline">⚙️ Data Pipeline</a> |
+  <a href="#-getting-started">🚀 Getting Started</a> |
+  <a href="#-roadmap">🗺️ Roadmap</a>
+</p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-In%20Progress-yellow?style=flat-square" />
+  <img src="https://img.shields.io/badge/Cloud-AWS-orange?style=flat-square&logo=amazonaws" />
+  <img src="https://img.shields.io/badge/Architecture-Medallion-blue?style=flat-square" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Amazon%20S3-Storage-569A31?style=for-the-badge&logo=amazons3&logoColor=white" />
+  <img src="https://img.shields.io/badge/AWS%20Glue-ETL-8C4FFF?style=for-the-badge&logo=amazonaws&logoColor=white" />
+  <img src="https://img.shields.io/badge/Amazon%20Athena-SQL-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white" />
+  <img src="https://img.shields.io/badge/Apache%20Iceberg-Table%20Format-00A1E0?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Python-ETL-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Step%20Functions-Orchestration-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
+</p>
 ## Architecture
 
 **Pipeline Flow:**
